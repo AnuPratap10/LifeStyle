@@ -1,9 +1,31 @@
 import React from 'react'
 import { Box, Img, Stack, Text, Divider, Button, HStack, VStack, FormControl, FormLabel, Input, GridItem, Checkbox } from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom';
+
+import { getCart } from "../../Redux/CartReducer/action";
+import  { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+
+
 const MyPaymentSec = () => {
 
     const navigate = useNavigate();
+    const data = useSelector((reduxStote) => reduxStote.CartReducer.products);
+    const dispatch = useDispatch()
+    let mrp = 0;
+    let stp = 0;
+  
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        mrp = mrp + data[i].price;
+        stp = stp + data[i].strikedPrice;
+      }
+    }
+
+    useEffect(() => {
+        dispatch(getCart);
+      }, []);
+
 
     const handleClick = () => {
         alert('Payment successful!');
@@ -319,11 +341,11 @@ const MyPaymentSec = () => {
                             <Box border={"1px"} borderColor={"#EFEFEF"} p={"15px"}>
                                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                     <Text fontSize={{ base: '14px', md: '12px', lg: '14px' }}>Total MRP</Text>
-                                    <Text fontSize={{ base: '14px', md: '12px', lg: '14px' }} fontWeight={"medium"}>₹3999</Text>
+                                    <Text fontSize={{ base: '14px', md: '12px', lg: '14px' }} fontWeight={"medium"}>₹{stp}</Text>
                                 </Box>
                                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                     <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"}>Offer discount</Text>
-                                    <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} color={"#46B275"} fontWeight={"medium"}> -₹1200</Text>
+                                    <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} color={"#46B275"} fontWeight={"medium"}> -₹{stp-mrp}</Text>
                                 </Box>
                                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                     <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} >Standared Ground Shipping</Text>
@@ -332,7 +354,7 @@ const MyPaymentSec = () => {
                                 <Divider mt={"10px"} />
                                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                     <Text fontSize={{ base: '18px', md: '18px', lg: '18px' }} mt={"10px"}>Total</Text>
-                                    <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} fontWeight={"medium"}>₹2799</Text>
+                                    <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} fontWeight={"medium"}>₹{mrp}</Text>
                                 </Box>
                             </Box>
 

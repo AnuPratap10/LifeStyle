@@ -36,12 +36,12 @@ export const MenMenuItems = () => {
         <BeautyMenuItemsWrapper>
             <div className = "container">
                 <div className="Box">
-                    <MenuGroup>
-                        <MenuItem fontWeight="800" mt={"20px"}><p className="item">Topwear</p></MenuItem>
+                    <MenuGroup onClick={handleClick}>
+                        <MenuItem onClick={handleClick} fontWeight="800" mt={"20px"}><p className="item">Topwear</p></MenuItem>
                         <MenuItem onClick={handleClick}><p className="item">Casual Shirts</p></MenuItem>
-                        <MenuItem><p className="item">Formal Shirts</p></MenuItem>
                         <MenuItem><p className="item">Polos</p></MenuItem>
-                        <MenuItem><p className="item">T-Shirts</p></MenuItem>
+                        <MenuItem onClick={handleClick}><p className="item">Formal Shirts</p></MenuItem>
+                        <MenuItem onClick={handleClick}><p className="item">T-Shirts</p></MenuItem>
                         <MenuItem><p className="item">Jackets</p></MenuItem>
                         <MenuItem><p className="item">Hoodies & Sweatshirts</p></MenuItem>
                     </MenuGroup>

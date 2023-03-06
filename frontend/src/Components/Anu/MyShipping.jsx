@@ -5,19 +5,37 @@ import {
     Flex, chakra, Select, Checkbox, RadioGroup, Radio, Button,
 
 } from '@chakra-ui/react'
-
-import React from 'react'
+import { getCart } from "../../Redux/CartReducer/action";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const MyShipping = () => {
 
+    const data = useSelector((reduxStote) => reduxStote.CartReducer.products);
+    const dispatch = useDispatch()
+    let mrp = 0;
+    let stp = 0;
+  
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        mrp = mrp + data[i].price;
+        stp = stp + data[i].strikedPrice;
+      }
+    }
+
+
     const navigate = useNavigate();
     const handleClick = ()=>{
+
+      
         alert("Address Added");
         navigate("/payment");
     }
 
-
+    useEffect(() => {
+        dispatch(getCart);
+      }, []);
 
     return (
         <>
@@ -90,7 +108,7 @@ const MyShipping = () => {
                             >
                                 <SimpleGrid columns={6} spacing={6} >
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} >
+                                    <FormControl as={GridItem} colSpan={[6, 3]} isRequired >
                                         <FormLabel
                                             htmlFor="first_name"
                                             fontSize="sm"
@@ -119,7 +137,7 @@ const MyShipping = () => {
                                         />
                                     </FormControl>
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} >
+                                    <FormControl as={GridItem} colSpan={[6, 3]}  isRequired>
                                         <FormLabel
                                             htmlFor="last_name"
                                             fontSize="sm"
@@ -149,7 +167,7 @@ const MyShipping = () => {
 
 
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}>
+                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}  isRequired>
                                         <FormLabel
                                             htmlFor="first_name"
                                             fontSize="sm"
@@ -178,7 +196,7 @@ const MyShipping = () => {
                                         />
                                     </FormControl>
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}>
+                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}  isRequired>
                                         <FormLabel
                                             htmlFor="last_name"
                                             fontSize="sm"
@@ -205,7 +223,7 @@ const MyShipping = () => {
                                         />
                                     </FormControl>
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}>
+                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}   isRequired>
                                         <FormLabel
                                             htmlFor="first_name"
                                             fontSize="sm"
@@ -234,7 +252,7 @@ const MyShipping = () => {
                                         />
                                     </FormControl>
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}>
+                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}   isRequired>
                                         <FormLabel
                                             htmlFor="last_name"
                                             fontSize="sm"
@@ -261,7 +279,7 @@ const MyShipping = () => {
                                         />
                                     </FormControl>
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}>
+                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}   isRequired>
                                         <FormLabel
                                             htmlFor="first_name"
                                             fontSize="sm"
@@ -290,7 +308,7 @@ const MyShipping = () => {
                                         />
                                     </FormControl>
 
-                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}>
+                                    <FormControl as={GridItem} colSpan={[6, 3]} mt={"20px"}  isRequired>
                                         <FormLabel
                                             htmlFor="last_name"
                                             fontSize="sm"
@@ -366,11 +384,11 @@ const MyShipping = () => {
                         <Box border={"1px"} borderColor={"#EFEFEF"} p={"15px"}>
                             <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                 <Text fontSize={{ base: '14px', md: '12px', lg: '14px' }}>Total MRP</Text>
-                                <Text fontSize={{ base: '14px', md: '12px', lg: '14px' }} fontWeight={"medium"}>₹3999</Text>
+                                <Text fontSize={{ base: '14px', md: '12px', lg: '14px' }} fontWeight={"medium"}>₹{stp}</Text>
                             </Box>
                             <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                 <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"}>Offer discount</Text>
-                                <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"}color={"#46B275"}fontWeight={"medium"}> -₹1200</Text>
+                                <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"}color={"#46B275"}fontWeight={"medium"}> -₹{stp-mrp}</Text>
                             </Box>
                             <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                 <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} >Standared Ground Shipping</Text>
@@ -379,7 +397,7 @@ const MyShipping = () => {
                             <Divider  mt={"10px"}/>
                             <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                                 <Text fontSize={{ base: '18px', md: '18px', lg: '18px' }} mt={"10px"}>Total</Text>
-                                <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} fontWeight={"medium"}>₹2799</Text>
+                                <Text fontSize={{ base: '14px', md: '14px', lg: '14px' }} mt={"10px"} fontWeight={"medium"}>₹{mrp}</Text>
                             </Box>
                         </Box>
 

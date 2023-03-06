@@ -7,15 +7,19 @@ import {
   theme,
   chakra,
 } from "@chakra-ui/react";
+
 import React from "react";
-import Logo from "../../../Assets/styleNovaLogo.svg";
+
+import Logo from "../../../Assets/StyleNovaLogo.svg";
 import { NavbarWrapper } from "./Navbar.style.jsx";
 import { MdFavoriteBorder } from "react-icons/md";
+
 import {
   HiOutlineSearch,
   HiOutlineShoppingBag,
   HiSearch,
 } from "react-icons/hi";
+
 import NavMenu from "./NavMenu";
 import MoreMenu from "./MoreMenu";
 import { Link } from "react-router-dom";
@@ -30,6 +34,7 @@ const Navbar = () => {
   // console.log(theme)
 
   return (
+    
     <NavbarWrapper>
       <div className="NavbarContainer">
         <div className="leftHalf">

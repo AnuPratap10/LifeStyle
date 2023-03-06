@@ -45,7 +45,7 @@ const modify = ()=>{
 
     return (
         <div>
-            <Button onClick={onOpen}>Qty:{item.quantity} </Button>
+            <Button onClick={onOpen}>Qty:{qty+item.quantity} </Button>
             <Modal onClose={onClose} isOpen={isOpen} isCentered >
                 <ModalOverlay />
                 <ModalContent w={"300px"}  p={"5px"}>
@@ -65,16 +65,16 @@ const modify = ()=>{
 
 
                         <SimpleGrid columns={5} spacing={5} >
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"} bg={"white"} _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(1)} >1</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}} onClick={()=>setQty(2)} >2</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(3)} >3</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(4)} >4</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(5)} >5</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(6)} >6</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(7)} >7</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(8)} >8</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(9)} >9</Button>
-                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(10)} >10</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"} bg={"white"} _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(0)} >1</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}} onClick={()=>setQty(1)} >2</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(2)} >3</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(3)} >4</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(4)} >5</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(5)} >6</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(6)} >7</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(7)} >8</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(8)} >9</Button>
+                            <Button className="glide" w="40px" borderRadius={"5px"} border={"1px solid gray"}  bg={"white"}  _hover={{bg:"#FAA619",color:"white"}}  onClick={()=>setQty(9)} >10</Button>
                         </SimpleGrid>
 
                     </ModalBody>

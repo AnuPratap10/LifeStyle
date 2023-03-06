@@ -5,8 +5,16 @@ import { WomenMenuItems } from './WomenMenuItems'
 
 const WomenMenu = () => {
     const { isOpen , onOpen, onClose } = useDisclosure()
+
+const handleClick=()=>{
+  
+}
+
   return (
-    <Menu isOpen={ isOpen } height={"100%"}>
+    <>
+    <Menu 
+    isOpen={ isOpen } height={"100%"}
+    >
             <li className="MenuButtonContainer">
             <MenuButton 
             height={"100%"}
@@ -14,15 +22,19 @@ const WomenMenu = () => {
             fontWeight={"800"}
             onMouseEnter={onOpen}
             onMouseLeave={onClose}
-            // onClick={handleClick}
+            onClick={handleClick}
             > 
             Women
             </MenuButton>
             </li>
-            <MenuList onMouseEnter={onOpen} onMouseLeave={onClose} mt="13px">
+            <MenuList 
+            onMouseEnter={onOpen} onMouseLeave={onClose} 
+            mt="13px"
+            >
                 <WomenMenuItems/>
             </MenuList>
         </Menu>
+        </>
   )
 }
 
